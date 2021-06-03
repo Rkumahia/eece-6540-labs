@@ -115,7 +115,7 @@ int main(int argc, char **argv) {
 
 bool init() {
   cl_int status;
-
+  printf("\n bool init() started RK\n");
   if(!setCwdToExeDir()) {
     return false;
   }
