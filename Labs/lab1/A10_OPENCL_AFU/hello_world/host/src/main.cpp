@@ -103,6 +103,7 @@ int main(int argc, char **argv) {
   checkError(status, "Failed to finish");
 
   printf("\nKernel execution is complete.\n");
+  printf("\nRICHARD KUMAHIA\n");
 
   // Free the resources allocated
   cleanup();
