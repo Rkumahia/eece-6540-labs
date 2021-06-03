@@ -102,8 +102,8 @@ int main(int argc, char **argv) {
   status = clFinish(queue);
   checkError(status, "Failed to finish");
 
-  printf("\nKernel execution is complete.\n");
-  printf("\nRICHARD KUMAHIA\n");
+    printf("\nRICHARD KUMAHIA\n");
+    printf("\nKernel execution is complete.\n");
 
   // Free the resources allocated
   cleanup();
