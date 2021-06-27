@@ -40,7 +40,9 @@ int main(int argc, char** argv) {
   Options options(argc, argv);
 
   int ret;
-
+  m = atoi(argv[1]);
+  n = atoi(argv[2]);
+  p = atoi(argv[3]);
   // Optional argument to specify whether the emulator should be used.
   if(options.has("emulator")) {
   use_emulator = options.get<bool>("emulator");
@@ -111,15 +113,15 @@ int main(int argc, char** argv) {
 
   printf("\nKernel initialization is complete.\n");
   printf("Launching the kernel...\n\n");
-
+  
   // Configure work set over which the kernel will execute
   size_t globalws[2]={m, p};
   size_t localws[2] = {2, 2};
-
+  
   // Execute the kernel 
   status = clEnqueueNDRangeKernel(queue, kernel, 2, NULL,
       globalws, localws, 0, NULL, NULL);
-
+  
   // it is important to check the return value.
   checkError(status, "Failed to launch kernel");
 
@@ -220,7 +222,7 @@ bool init() {
   checkError(status, "Failed to create command queue");
 
   // Create the program.
-  std::string binary_file = getBoardBinaryFile("matrix_multi", device);
+  std::string binary_file = getBoardBinaryFile("matrix_add_mult", device);
   printf("Using AOCX: %s\n", binary_file.c_str());
   program = createProgramFromBinary(context, binary_file.c_str(), &device, 1);
 
@@ -230,7 +232,7 @@ bool init() {
 
   // Create the kernel - name passed in here must match kernel name in the
   // original CL file, that was compiled into an AOCX file using the AOC tool
-  const char *kernel_name = "simpleMultiply";  // Kernel name, as defined in the CL file
+  const char *kernel_name = "MultAdd";  // Kernel name, as defined in the CL file
   kernel = clCreateKernel(program, kernel_name, &status);
   checkError(status, "Failed to create kernel");
 
