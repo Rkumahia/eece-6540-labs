@@ -34,7 +34,7 @@ static void display_device_info( cl_device_id device );
 
 //using namespace aocl_utils;
 
-int main() {
+int main(int argc, char** argv) {
   Options options(argc, argv);
 
   int ret;
@@ -46,7 +46,7 @@ int main() {
 
   cl_int status;
 
-  (!init()) {
+  if (!init()) {
       return -1;
   }
 
