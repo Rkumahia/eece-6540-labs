@@ -8,6 +8,8 @@
 
 using namespace aocl_utils;
 
+#define STRING_BUFFER_LEN 1024
+
 int m = 200;
 int n = 400;
 int p = 600;
