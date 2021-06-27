@@ -10,9 +10,9 @@ using namespace aocl_utils;
 
 #define STRING_BUFFER_LEN 1024
 
-int m = 200;
-int n = 400;
-int p = 600;
+static size_t m = 200;
+static size_t n = 400;
+static size_t p = 600;
 
 // OpenCL runtime configuration
 static cl_platform_id platform = NULL;
@@ -131,7 +131,7 @@ int main(int argc, char** argv) {
 
   // Copy the output data back to the host 
   clEnqueueReadBuffer(queue, bufferD, CL_TRUE, 0, m * p * sizeof(float),
-         (void *)D, 0, NULL, NULL);
+         (void *)matrixD, 0, NULL, NULL);
 
   //print results
   printf("Top row of matrix D: [");
